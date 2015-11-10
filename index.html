@@ -13,11 +13,11 @@
             background: #e2e2e2;
         }
         #form-card {
-			margin: auto;
+            margin: auto;
             text-align: center;
         }
         textarea {
-			padding: 15px;
+            padding: 15px;
             border: none;
             width: 100%;
             height: 100%;
@@ -26,33 +26,44 @@
         textarea:focus {
             outline: none;
         }
+        #recaptcha > div > div {
+            width: 100% !important;
+        }
     </style>
 </head>
 
 <body>
+    <script type="text/javascript">
+        var onloadCallback = function()
+        {
+            grecaptcha.render('recaptcha',
+            {
+                'sitekey': '6LfwqhATAAAAAM-xT8HqIVXFj-0hkvCSq26h69ch',
+            });
+        };
+    </script>
     <div class="section"></div>
     <div id="form-card">
         <div class="container">
-			<h5>靠北清大。</h5>
-            <div class="row">
-                <div class="col l6 offset-l3 m8 offset-m2 s12">
-                    <div class="card" style="width: 100%; height: 300px;">
-                        <textarea placeholder="你在靠北什麼？"></textarea>
+            <form method="post" action="submit.php">
+                <h5>靠北清大。</h5>
+                <div class="row">
+                    <div class="col l6 offset-l3 m8 offset-m2 s12">
+                        <div class="card" style="width: 100%; height: 300px;">
+                            <textarea placeholder="你在靠北什麼？" name="message"></textarea>
+                        </div>
+                        <div class="card" style="width: 100%; padding: 15px;">
+                            <div id="recaptcha"></div>
+                        </div>
+                        <button class="purple waves-effect waves-light btn-large" style="width: 100%;">送出</button>
                     </div>
-                    <div class="card" style="width: 100%; height: 100px;">
-                    </div>
-                    <button class="purple waves-effect waves-light btn-large" style="width: 100%;">送出</button>
                 </div>
-				<!-- <div class="col s4" style="height: 415px;"> -->
-                    <!-- <div class="card" style="width: 100%; height: 100%;"> -->
-                    <!-- </div> -->
-				<!-- </div> -->
-            </div>
+            </form>
         </div>
     </div>
 
-
-
+    <script src="https://www.google.com/recaptcha/api.js?onload=onloadCallback&render=explicit"
+    async defer></script>
     <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.2/js/materialize.min.js"></script>
 </body>
